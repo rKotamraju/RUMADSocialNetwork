@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//DON'T FORGET TO IMPORT FIREBASE
 
 class LogInViewController: UIViewController {
 
@@ -20,16 +21,16 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     @IBAction func LogInButtonTapped(_ sender: Any) {
-        //Authenticate User using Firebase
+        //USE FIREBASE HERE!!! Authenticate User using Firebase 
         
+        navigateToFeed()
+    }
+    
+    func navigateToFeed(){
         let feedViewController = storyboard?.instantiateViewController(identifier: "FeedViewController")
-        
         view.window?.rootViewController = feedViewController
-        
         view.window?.makeKeyAndVisible()
-        
     }
     
     @IBAction func signUpButtonTapped(_ sender: Any) {

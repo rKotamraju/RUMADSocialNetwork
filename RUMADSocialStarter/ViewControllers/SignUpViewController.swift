@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//DON'T FORGET TO IMPORT FIREBASE
 
 class SignUpViewController: UIViewController {
 
@@ -21,13 +22,17 @@ class SignUpViewController: UIViewController {
     
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         
-        //Create an Account on Firebase
+        //USE FIREBASE HERE!!! Create an Account on Firebase
         
+        
+        navigateToFeed()
+        
+    }
+    
+    func navigateToFeed() {
         let feedViewController = storyboard?.instantiateViewController(withIdentifier: "FeedViewController")
         self.view.window?.rootViewController = feedViewController
         self.view.window?.makeKeyAndVisible()
-        
-        
     }
     
     /*

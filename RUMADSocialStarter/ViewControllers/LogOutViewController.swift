@@ -6,6 +6,7 @@
 //
 
 import UIKit
+// DON't FORGET TO IMPORT FIREBASE
 
 class LogOutViewController: UIViewController {
 
@@ -19,12 +20,13 @@ class LogOutViewController: UIViewController {
         
         //Log Out Using Firebase
         
+        navigateToLogIn()
+    }
+    
+    func navigateToLogIn(){
         let signInViewController = storyboard?.instantiateViewController(withIdentifier: "LogInViewController")
-        
         view.window?.rootViewController = signInViewController
-        
         view.window?.makeKeyAndVisible()
-        
     }
     
 

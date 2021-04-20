@@ -363,19 +363,19 @@
     </scenes>
     <designables>
         <designable name="3A2-Vw-Flj">
-            <size key="intrinsicContentSize" width="138" height="34"/>
+            <size key="intrinsicContentSize" width="113" height="34"/>
         </designable>
         <designable name="CIM-Mk-JQl">
-            <size key="intrinsicContentSize" width="143.5" height="34"/>
+            <size key="intrinsicContentSize" width="118.5" height="34"/>
         </designable>
         <designable name="SCu-hn-laT">
-            <size key="intrinsicContentSize" width="138" height="34"/>
+            <size key="intrinsicContentSize" width="113" height="34"/>
         </designable>
         <designable name="Xxd-la-OwI">
-            <size key="intrinsicContentSize" width="100" height="34"/>
+            <size key="intrinsicContentSize" width="75" height="34"/>
         </designable>
         <designable name="oAZ-T2-3RD">
-            <size key="intrinsicContentSize" width="100" height="34"/>
+            <size key="intrinsicContentSize" width="75" height="34"/>
         </designable>
     </designables>
     <resources>
