@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 //DON'T FORGET TO IMPORT FIREBASE
 
 class SignUpViewController: UIViewController {
@@ -20,12 +21,45 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func validateFields() -> Bool{
+        
+        if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+         passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            return true
+        }
+        
+        return false
+    }
+    
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         
         //USE FIREBASE HERE!!! Create an Account on Firebase
+        let errors = validateFields()
+        let username = usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        
-        navigateToFeed()
+        Auth.auth().createUser(withEmail: email!, password: password!) {(result, error) in
+            
+            if error != nil{
+                print("error in creating user")
+            }
+            else{
+                let db = Firestore.firestore()
+                db.collection("uesrs").addDocument(data: ["username" : username!, "uid" : result!.user.uid]){
+                    (error) in
+                    
+                    if(error != nil){
+                        print("Not about to save data")
+                    }else{
+                        print("successfully saved user data in users colelction")
+                    }
+                }
+                print("Success")
+            }
+        }
+        self.navigateToFeed()
         
     }
     

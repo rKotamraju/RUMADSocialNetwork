@@ -7,6 +7,7 @@
 
 import UIKit
 //DON'T FORGET TO IMPORT FIREBASE
+import Firebase
 
 class LogInViewController: UIViewController {
 
@@ -21,10 +22,37 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func LogInButtonTapped(_ sender: Any) {
-        //USE FIREBASE HERE!!! Authenticate User using Firebase 
+    func validateFields() -> Bool{
         
-        navigateToFeed()
+        if passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            return true
+        }
+        
+        return false
+    }
+    
+    @IBAction func LogInButtonTapped(_ sender: Any) {
+        //USE FIREBASE HERE!!! Authenticate User using Firebase
+        let errorsPresent = validateFields()
+        if errorsPresent{
+            print("errors with user input")
+            return
+        }
+        
+        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else{return}
+        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else{return}
+        
+        
+        Auth.auth().signIn(withEmail: email, password: password){(result, error) in
+            if(error != nil){
+                print("error")
+            }else{
+                print("user success log in")
+                self.navigateToFeed()
+            }
+        }
+//        navigateToFeed()
     }
     
     func navigateToFeed(){
